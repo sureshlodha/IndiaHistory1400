@@ -1,0 +1,45 @@
+h1 {
+    text-align: center;
+}
+.begin {
+    clip-path: url(#clip);
+}
+
+.end {
+    clip-path: url(#clip);
+}
+
+.connectors {
+    clip-path: url(#clip);
+}
+
+.labels {
+    clip-path: url(#clip);
+    font-size: 10px;
+}
+
+.tooltip {	
+    position: absolute;						
+    width: 220px;					
+    height: 150px;					
+    padding: 5px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 5px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+.legend {
+    position: absolute;
+    background: lightsteelblue;
+    border: 5px;
+    border-radius: 8px;
+}
+
+.dropdown {
+    position: absolute;
+    width: auto;
+    top: 700px;
+    left: 50px;
+}

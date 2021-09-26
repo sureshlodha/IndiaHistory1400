@@ -1,0 +1,127 @@
+{
+    "empires" : {
+        "mugdal_empire" : {
+            "Babur" : [1526, 1530],
+            "Hamayun" : [1530, 1556],
+            "Akbar" : [1556, 1605],
+            "Jahangir" : [1605, 1627],
+            "Shah Jahan" : [1628, 1658],
+            "Aurangzeb" : [1658, 1707]
+        },
+
+        "sikh_gurus" : {
+            "Guru Nanak" : [1469, 1539],
+            "Guru Angad" : [1504, 1552],
+            "Guru Amar Das" : [1479, 1574],
+            "Guru Ram Das" : [1534, 1581],
+            "Guru Arjan" : [1563, 1606],
+            "Guru Hargobind" : [1595, 1644],
+            "Guru Har Rai" : [1630, 1661],
+            "Guru Har Krishan" : [1656, 1664],
+            "Guru Teg Bahadur" : [1621, 1675],
+            "Guru Gobind Singh" : [1666, 1708]
+        },
+
+        "ahom_empire" : {
+            "Sukaphaa"          : [1228, 1268],
+            "Suteuphaa"         : [1268, 1281],
+            "Subinphaa"         : [1281, 1293],
+            "Sukhaangphaa"      : [1293, 1332],
+            "Sukhrangpha"       : [1332, 1364],
+            "Interregnum"       : [1364, 1369, 1376, 1380, 1389, 1397],
+            "Sutuphaa"          : [1369, 1376],
+            "Tyao Khamti"       : [1380, 1389],
+            "Sudangphaa"        : [1397, 1407],
+            "Sujangphaa"        : [1407, 1422],
+            "Suphakphaa"        : [1422, 1439],
+            "Susenphaa"         : [1439, 1488],
+            "Suhenphaa"         : [1488, 1493],
+            "Supimphaa"         : [1493, 1497],
+            "Suhungmung"        : [1497, 1539],
+            "Suklenmung"        : [1539, 1552],
+            "Sukhaamphaa"       : [1552, 1603],
+            "Susenghphaa"       : [1603, 1641],
+            "Suramphaa"         : [1641, 1644],
+            "Sutingphaa"        : [1644, 1648],
+            "Sutamla"           : [1648, 1663],
+            "Supangmung"        : [1663, 1670],
+            "Sunyatphaa"        : [1670, 1672],
+            "Suklamphaa"        : [1672, 1674],
+            "Suhung"            : [1674, 1675],
+            "Gobar Roja"        : [1675, 1675],
+            "Sujinphaa"         : [1675, 1677],
+            "Sudoiphaa"         : [1677, 1679],
+            "Sulikphaa"         : [1679, 1681],
+            "Supatphaa"         : [1681, 1696],
+            "Sukhrungphaa"      : [1696, 1714],
+            "Sutanphaa"         : [1714, 1744],
+            "Sunenphaa"         : [1744, 1751],
+            "Suremphaa"         : [1751, 1769],
+            "Sunyeophaa"        : [1769, 1780],
+            "Suhitpangphaa"     : [1780, 1795],
+            "Suklingphaa"       : [1795, 1811],
+            "Sudingphaa"        : [1811, 1818, 1819, 1821],
+            "Purandar Singha"	: [1818, 1819, 1833, 1838],
+            "Jogeswar Singha"   : [1821, 1822]
+        },
+        "maratha_empire" : {
+            "rulers" : {
+                "Shivaji" : [1674, 1680],
+                "Sambhaji" : [1681, 1689],
+                "Rajaram I" : [1689, 1700],
+                "Tarabai" : [1700, 1708],
+                "Shivaji II" : [1700, 1707, 1710, 1714],
+                "Sambhaji II" : [1714, 1760],
+                "Shivaji III" : [1760, 1812]
+            },
+            "satara_throne" : {
+                "Shahu" : [1708, 1749],
+                "Rajaram II of Satara" : [1749, 1777],
+                "Shahu II of Satara" : [1777, 1808],
+                "Pratap Sing, Raja of Satara" : [1808, 1839]
+            }
+        },
+        "vijayanagar_empire" : {
+            "sangama_dynasty" : {
+                "Harihara I" : [1336, 1356],
+                "Bukka Raya I" : [1356, 1377],
+                "Harihara Raya II" : [1377, 1404],
+                "Virupaksha Raya" : [1404, 1405],
+                "Bukka Raya II" : [1405, 1406],
+                "Deva Raya I" : [1406, 1422],
+                "Ramachandra Raya" : [1422],
+                "Vira Vijaya Bukka Raya" : [1422, 1424],
+                "Deva Raya II" : [1424, 1446],
+                "Mallikarjuna Raya" : [1446, 1465],
+                "Virupaksha Raya II" : [1465, 1485],
+                "Praudha Raya" : [1485]
+            },
+
+            "saluva_dynasty" : {
+                "Saluva Narasimha Deva Raya" : [1485, 1491],
+                "Thimma Bhupala" : [1491],
+                "Narasimha Raya II"	: [1491, 1505]
+            },
+
+            "tuluva_dynasty" : {
+                "Tuluva Narasa Nayaka" : [1491, 1503],
+                "Vira Narasimha Raya" : [1503, 1509],
+                "Krishna Deva Raya" : [1509, 1529],
+                "Achyuta Deva Raya" : [1529, 1542],
+                "Venkata I" : [1542],
+                "Sadasiva Raya" : [1542, 1570]
+            },
+
+            "aravidu_dynasty" : {
+                "Aliya Rama Raya" : [1542, 1565],
+                "Tirumala Deva Raya" : [1565, 1572],
+                "Sriranga I" : [1572, 1586],
+                "Venkata II" : [1586, 1614],
+                "Sriranga II" : [1614],
+                "Rama Deva Raya" : [1617, 1632],
+                "Venkata III" : [1632, 1642],
+                "Sriranga III" : [1642, 1646]
+            }
+        }
+    }
+}
