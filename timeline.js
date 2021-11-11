@@ -92,6 +92,15 @@ let brush = d3
   ])
   .on("brush", brushed);
 
+let brush_label_1 = svg.append("text")
+  .attr("class", "brush_label_1")
+  .attr("text-anchor", "middle")
+  .attr("y", (height - caseGraphHeight) / 2 - 130);
+let brush_label_2 = svg.append("text")
+  .attr("class", "brush_label_2")
+  .attr("text-anchor", "middle")
+  .attr("y", (height - caseGraphHeight) / 2 - 130);
+
 empire_data = {};
 
 empire_list.forEach((item) => {
@@ -179,8 +188,6 @@ function drawTimeline(data) {
         .style("stroke-width", "3")
         .style("stroke", colorScale(item))
         .on("mouseover", function (d) {
-        //   console.log(d3.event.pageX);
-        //   console.log(d3.event.pageY);
           scaleLines.style("opacity", 0.4);
           tooltip.transition().duration(200).style("opacity", 1);
           tooltip.style("border-color", colorScale(item));
@@ -253,7 +260,7 @@ function drawTimeline(data) {
   var brusher = svg
     .append("g")
     .call(brush)
-    .call(brush.move, [x2(1500), x2(1600)]);
+    .call(brush.move, [x2(1500) + hTranslation, x2(1600) + hTranslation]);
 
 
   d3.selectAll("g.time-axis2 g.tick")
@@ -275,6 +282,15 @@ function clearGraph() {
   d3.selectAll(".ruler_rectangle").remove();
   d3.select(".case-graph-title").remove();
 }
+
+function getTextWidth(text, font) {
+    // re-use canvas object for better performance
+    const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    const context = canvas.getContext("2d");
+    context.font = font;
+    const metrics = context.measureText(text);
+    return metrics.width;
+  }
 
 function drawCaseGraph(empire, data) {
 
@@ -329,13 +345,6 @@ function drawCaseGraph(empire, data) {
     // console.log("x_end_2:", x_end_2);
     // console.log("x_end_3:", x_end_3);
     let y = x4(d);
-
-    case_graph_rectangles[empire].push({
-      "width" : x_end_3 - x_start_1,
-      "height" : div,
-      "x" : x_start_1 + hTranslation,
-      "y" : y
-    });
 
     let rect_1 = svg.append("rect")
       .attr("class", "ruler_rectangle")
@@ -392,8 +401,6 @@ function drawCaseGraph(empire, data) {
       .attr("fill", "red")
       .attr("opacity", 0.75)
       .on("mouseover", function () {
-        // console.log(d3.event.pageX);
-        // console.log(d3.event.pageY);
         rect_3.style("opacity", 0.4);
         tooltip.transition().duration(200).style("opacity", 1);
         tooltip.style("border-color", "blue");
@@ -413,6 +420,13 @@ function drawCaseGraph(empire, data) {
       .attr("y", y + div / 2)
       .attr("text-anchor", "end")
       .text(d);
+    let text_width = getTextWidth(d, "times");
+    case_graph_rectangles[empire].push({
+      "width" : x_end_3 - x_start_1,
+      "height" : div,
+      "x" : x_start_1 + hTranslation - 2 * text_width,
+      "y" : y
+    });
   });
 
   // add axes for graph
@@ -498,28 +512,20 @@ function drawLegend() {
 }
 
 function getRectangleHeight(x_coor, rectangle_info, graph_height) {
-  // console.log("getRectangleHeight info:")
-  // console.log("x_coor in func:", x_coor);
-  // console.log(rectangle_info);
-  // console.log(graph_height);
-  let height = -graph_height + 50;
-
-  rectangle_info.every((d) => {
-    // console.log("info: ", d);
-    // console.log("x_coor: ", x_coor);
-    if (d.x > x_coor) {
-      return false;
-    } else if (d.x <= x_coor && d.x + d.width > x_coor) {
-      height += d.height;
-      return true;
-    } else {
-      height += d.height
-      return true;
-    }
-  });
-
-  return height;
-}
+    let height = -graph_height + 50;
+    let rect_height = 0;
+    let height_counter = 0;
+    rectangle_info.forEach((d) => {
+      rect_height = d.height;
+      height_counter += 1;
+      if (x_coor >= d.x) {
+        height += height_counter * d.height;
+        height_counter = 0;
+      }
+      // console.log("x_coor: ", x_coor, " d.x: ", d.x, " height: ", height);
+    });
+    return height;
+  }
 
 function adjustVerticalTickLengths(empire) {
   // console.log(case_graph_rectangles);
@@ -582,12 +588,25 @@ d3.select(".dropdown")
   });
 
 function brushed(d) {
-  timelineX.domain([
-    x2.invert(d3.event.selection[0] - hTranslation),
-    x2.invert(d3.event.selection[1] - hTranslation),
-  ]);
+
+  let brush_begin = d3.event.selection[0] - hTranslation;
+  let brush_end = d3.event.selection[1] - hTranslation;
+
+  let axis_brush_begin = x2.invert(brush_begin);
+  let axis_brush_end = x2.invert(brush_end);
+
+  d3.select(".brush_label_1")
+    .attr("x", brush_begin + hTranslation)
+    .text(Math.round(axis_brush_begin));
+
+  d3.select(".brush_label_2")
+    .attr("x", brush_end + hTranslation)
+    .text(Math.round(axis_brush_end));
+
+  timelineX.domain([axis_brush_begin, axis_brush_end]);
   svg.select(".time-axis2").call(timeAxis);
 
+//   updateDates();
   updateNodes();
 }
 
